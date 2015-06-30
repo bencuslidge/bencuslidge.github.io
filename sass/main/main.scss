@@ -1,0 +1,254 @@
+body, html{
+	font-family: 'Source Code Pro', ;
+	font-size:16px;
+	color:#fff;
+	line-height:1.4em;
+}
+a{
+	text-decoration:none;
+	color:#fff;
+}
+h3{
+	clear:both;
+}
+.bold{
+	font-weight:700;
+}
+ul{
+	list-style:none;
+	li{
+		margin-bottom:0.5em;
+	}
+}
+@mixin respond-to($media) {
+  @if $media == ipadUp {
+    @media only screen and (min-width: 768px) { @content; }
+  }
+  @else if $media == ipadOnly {
+    @media only screen and (min-width: 768px) and (max-width: 1024px) { @content; }
+  }
+  @else if $media == phoneSmallOnly {
+    @media only screen and (max-width: 567px) { @content; }
+  }  
+  @else if $media == phoneMedium {
+    @media only screen and (min-width: 568px) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: 1024px) { @content; }
+  }
+  @else if $media == aboveIpad {
+    @media only screen and (min-width: 1025px) { @content; }
+  }
+  @else if $media == largeScreen {
+    @media only screen and (min-width: 1551px) { @content; }
+  }
+  @else if $media == veryLargeScreen {
+    @media only screen and (min-width: 1920px) { @content; }
+  }
+  @else if $media == smallOnly {
+    @media only screen and (max-width: 1023px) { @content; }
+  }
+}
+.content-container{
+	margin-top:2em;
+	margin-bottom:2em;
+	@include center(300px);
+    @include respond-to(phoneMedium){
+        @include center(540px);
+    }
+    @include respond-to(ipadUp){
+        @include center(78%);
+    }
+    @include respond-to(largeScreen){
+        @include center(1024px);
+    }
+}
+//ICONS
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?978k6h');
+	src:url('../fonts/icomoon.eot?#iefix978k6h') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?978k6h') format('truetype'),
+		url('../fonts/icomoon.woff?978k6h') format('woff'),
+		url('../fonts/icomoon.svg?978k6h#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-twitter:before {
+	content: "\ea91";
+}
+.icon-linkedin2:before {
+	content: "\eac9";
+}
+.icon-mail:before {
+	content: "\e600";
+}
+body{
+	background-image:url('../img/old_moon_black.png');
+}
+//HEADER
+.logo{
+	width:58px;
+	height:auto;
+	position:absolute;
+	top:15px;
+	left:15px;
+}
+.stars{
+	background-image:url('../img/old_moon.png');
+	padding:7.5em 15px;
+	@include respond-to(ipadUp){
+		padding:7.5em 0;
+	}
+}
+//TERMINAL
+.terminal {
+	display: block;
+	margin: auto;
+	max-width: 500px;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
+	clear: both;
+	overflow: hidden;
+	.title{
+		color:#999;
+		padding: 5px 0;
+		font-size: 0.75em;
+		text-align: center;
+		text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
+		background-color: #f8f8f8;
+		background-image: -webkit-linear-gradient(top, #e8e8e8, #bcbbbc);
+		background-image: -moz-linear-gradient(top, #e8e8e8, #bcbbbc);
+		background-image: linear-gradient(top, #e8e8e8, #bcbbbc);
+		box-shadow: inset rgba(255, 255, 255, 0.7) 0px 1px 1px;
+		border-bottom: #6a6a6a 1px solid;
+	}
+	.terminal-body{
+		height: 260px;
+		background-color: rgba(0, 0, 0, 0.85);
+		padding: 10px;
+		color: #f0f0f0;
+		text-shadow: #000 0px 1px 0px;
+		font-size: 1.1em;
+		line-height: 1.40em;
+		text-align: left;
+		overflow: hidden;		
+	}
+}
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+//PROJECTS
+.eachProject{
+	overflow:hidden;
+	margin-bottom:2em;
+	a.projectScreen{
+		height:280px;
+		background-repeat:no-repeat;
+		background-size:cover;
+		position:relative;
+		@include respond-to(desktop){
+			@include col(1/2);
+		}		
+	}
+	.projectScreen{
+		height:280px;
+		background-repeat:no-repeat;
+		background-size:contain;
+		background-position:center center;
+		opacity:0.9;
+		&.bvm{
+			background-image:url(../img/bvm.png);
+		}
+		&.cga{
+			background-image:url(../img/cga.png);
+		}
+		&.cca{
+			background-image:url(../img/cca.png);
+		}
+	}
+	.projectDescription{
+		@include respond-to(desktop){
+			@include col(1/2);
+		}		
+	}
+}
+
+//ABOUT
+ul.skillList{
+	@include respond-to(desktop){
+		float:left;
+		&:last-of-type{
+			margin-left:3%;
+		}
+	}
+}
+
+//FOOTER
+footer{
+	background:#000;
+	padding:7px 30px;
+	overflow:hidden;
+	position:relative;
+	ul.links{
+		list-style:none;
+		padding:0;
+		margin:0;
+		@include align(vertical);
+		left:30px;
+		li{
+			float:left;
+			margin-right:10px;
+			margin-bottom:0;
+			&:last-child{
+				margin-right:0;
+			}
+			a{
+				text-decoration:none;
+				color:#fff;
+				&:hover, &:active, &:focus{
+					color:#fff;
+				}
+			}
+		}
+	}
+	p.copy{
+		color:#fff;
+		float:right;
+		font-size:0.75em;
+	}
+}
